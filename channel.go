@@ -1,3 +1,5 @@
+// todo: support generic types
+
 package main
 
 import (
@@ -15,6 +17,7 @@ type Channel struct {
 }
 
 func (ch *Channel) Send(data int) {
+	// if channel is closed panic
 	if ch.isClosed {
 		panic("send on a closed channel")
 	}
@@ -49,6 +52,7 @@ func (ch *Channel) Send(data int) {
 }
 
 func (ch *Channel) Recv() int {
+	// if channel is closed return zero value
 	if ch.isClosed {
 		var data int
 		return data
